@@ -1,0 +1,132 @@
+.hero-overlay {
+    background-color: rgba(0, 0, 0, 0.65);
+    /* sfondo nero con opacità */
+    z-index: 2;
+}
+
+.hero-content {
+    max-width: 800px;
+}
+
+.carousel-indicators {
+    z-index: 3;
+}
+
+.testo-di-prova-rosso {
+    color: red !important;
+}
+
+.carousel-inner {
+    height: 60vh;
+    max-height: 800px;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: none;
+}
+
+.carousel-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-overlay {
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 2;
+    padding: 0 15px;
+    box-sizing: border-box;
+}
+
+.hero-content {
+    max-width: 900px;
+    padding: 2rem 0;
+    margin: 0 auto;
+    color: white;
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin: 0;
+}
+
+.hero-content p {
+    font-size: 1.25rem;
+    margin: 1rem 0 2rem 0;
+}
+
+/* --- Stili base validi per tutti i dispositivi --- */
+.carousel-inner,
+.carousel-item img,
+.hero-overlay {
+    height: 100vh;
+    width: 100vw;
+}
+
+.carousel-item img {
+    object-fit: cover;
+}
+
+.hero-overlay {
+    background: rgba(0, 0, 0, 0.5);
+    /* o linear-gradient se vuoi più finezza */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+}
+
+.hero-content {
+    z-index: 3;
+    color: white;
+    max-width: 800px;
+}
+
+/* --- Responsive per dispositivi piccoli (fino a 767.98px) --- */
+@media (max-width: 767.98px) {
+    .hero-content h1 {
+        font-size: 1.6rem;
+        margin-top: 4rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+        margin-top: 1rem;
+        margin-bottom: 6rem;
+        line-height: 1.5;
+    }
+
+    .hero-overlay {
+        padding-top: 6rem;
+        /* Spazio dalla navbar */
+        padding-bottom: 5rem;
+        /* Spazio dai bottoni/carosello */
+    }
+}
+
+.card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card .btn {
+    margin-top: auto;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    transition: transform 0.3s ease;
+}

@@ -1,0 +1,96 @@
+DA WINDOWS!
+
+(Prima di installare MySQL, COMPOSER, LARAVEL bisogna installare PHP)!
+(Prima di procedere con tutte e 3 le installazioni, DISATTIVATE l'antivirus presente nel vostro PC).
+
+
+
+---------------------------------------------------------------------------------------------------------------
+
+INSTALLAZIONE MYSQL 
+
+
+SCARICA E INSTALLA MYSQL -> https://dev.mysql.com/downloads/installer/
+Se non scarica subito, schiaccia su "No thanks, just start my download."
+
+
+APRILO COME AMMINISTRATORE 
+MySQL Servers -> MySQL Server -> MYSQL Server 8.0 -> MySQL Server 8.0.43 - x64 (e spostalo con la freccia verde a destra)
+Documentation -> MySQL Documentation -> MySQL Documentation 8.0 -> MySQL Documentation 8.0.43 (e spostalo con la freccia verde a destra)
+
+
+TYPE AND NETWORKING: 
+Config Type: Development Computer
+TCP/IP
+Port: 3306
+X Protocol Port: 33060
+Open Windows Firewall ports for network access
+
+
+AUTHENTICATION METHOD:
+e schiaccia su "Use Legacy Authentication Method (Retain MySQL 5.x Compatibility)"
+
+
+ACCOUNT AND ROLES: 
+MySQL Root Password: root
+Repeat Password: root
+
+
+WINDOWS SERVICE:
+Configure MySQL Server as a Windows Service 
+Windows Service Name: MySQL80
+schiaccia su "Start the MySQL Server at System Startup"
+
+schiaccia su "Standard System Account"
+
+
+SERVER FILE PERMISSION:
+schiaccia su "Yes, grant full access to the user… have access."
+
+
+APPLY CONFIGURATION:
+Execute; e attendi che tutti i pallini "bianchi" diventano verdi!
+
+---------------------------------------------------------------------------------------------------------------
+
+Cerca adesso sulla barra di ricerca "variabili" oppure "modifica le variabili di ambiente relative al sistema" 
+
+Si aprirà "proprietà del sistema…"
+schiaccia su "variabili d'ambiente"
+
+scorri verso il basso finchè non trovi "Path C:windows\system ecc. e cliccaci 2 volte!
+
+una volta aperto, clicca su "nuovo" e aggiungici questo -> C:\Program Files\MySQL\MySQL Server 8.0\bin\ e poi schiaccia su "ok".
+
+CHIUDI TUTTE LE PAGINE. 
+
+--------------------------------------------------------------------------------------------------------------
+
+Apri GitBash (come Amministratore) e digita -> winpty mysql -u root -p 
+se chiede la password, sarà quella impostata da te (in quel caso, "root").
+Adesso sarà installato correttamente! 
+
+
+
+--------------------------------------------------------------------------------------------------------------
+
+INSTALLAZIONE COMPOSER
+
+Vai su questo sito -> https://getcomposer.org/download/ 
+
+schiaccia sul tasto  Composer-Setup.exe (si trova nella terza frase in alto). 
+schiaccia sempre su "next" finchè non viene installato! 
+Apri GitBash (come Amministratore) e digita -> composer -v 
+
+se tutto è andato bene, vedrai la scritta "composer" su GitBash con una serie di file installati! 
+
+
+
+--------------------------------------------------------------------------------------------------------------
+
+INSTALLAZIONE LARAVEL 
+
+Sempre su GitBash, digita -> composer global require laravel/installer
+per vedere se è stato installato, digita -> laravel -v
+
+

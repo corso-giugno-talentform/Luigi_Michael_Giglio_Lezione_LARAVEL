@@ -1,92 +1,34 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PageController;
 
-Route::get('/', function () {
-    $services = [
-        [
-            'id' => 1,
-            'slug' => 'marketing',
-            'titolo' => 'Marketing',
-            'descrizione' => 'Servizi di marketing digitale per aumentare la visibilità e il coinvolgimento.',
-        ],
-        [
-            'id' => 2,
-            'slug' => 'comunicazione',
-            'titolo' => 'Comunicazione',
-            'descrizione' => 'Strategie di comunicazione efficaci per aziende e brand.',
-        ],
-        [
-            'id' => 3,
-            'slug' => 'website',
-            'titolo' => 'Website',
-            'descrizione' => 'Progettazione e sviluppo siti web professionali e responsive.',
-        ],
-        [
-            'id' => 4,
-            'slug' => 'consulenza',
-            'titolo' => 'Consulenza',
-            'descrizione' => 'Consulenze personalizzate per migliorare i processi aziendali.',
-        ],
-        [
-            'id' => 5,
-            'slug' => 'mark',
-            'titolo' => 'Mark',
-            'descrizione' => 'Servizi vari di marketing e comunicazione.',
-        ],
-        [
-            'id' => 6,
-            'slug' => 'prova',
-            'titolo' => 'Prova',
-            'descrizione' => 'Descrizione di prova per testare il servizio.',
-        ],
-    ];
+// Homepage tramite controller
+Route::get('/', [PageController::class, 'homepage'])->name('homepage');
 
-    $projects = [
-        [
-            'id' => 1,
-            'slug' => 'Menu-per-Drinkeria',
-            'titolo' => 'Menu per Drinkeria',
-            'descrizione' => 'Progettazione e sviluppo di un menu digitale per una drinkeria, con design responsive e interattivo.',
-            'image' => asset('images/immagine_prova_1.jpg'),
-        ],
-        [
-            'id' => 2,
-            'slug' => 'Sito-Web-Azienda-Orologi',
-            'titolo' => 'Sito Web Azienda Orologi',
-            'descrizione' => 'Creazione di un sito vetrina per un’azienda di orologi di lusso, con focus su eleganza e usabilità.',
-            'image' => asset('images/immagine_prova_1.jpg'),
-        ],
-        [
-            'id' => 3,
-            'slug' => 'Portfolio-Personale',
-            'titolo' => 'Portfolio Personale',
-            'descrizione' => 'Realizzazione del mio portfolio personale per mostrare i miei progetti, con una struttura chiara e navigabile.',
-            'image' => asset('images/immagine_prova_1.jpg'),
-        ],
-    ];
-    return view('welcome', ['services' => $services, 'projects' => $projects]);
-});
+// Pagina "Chi Sono"
 Route::get('/chisono', function () {
     return view('chisono');
-});
-Route::get('/progetti', function () {
-    return view('project');
-});
+})->name('chisono');
 
+// Pagina dettaglio progetto tramite controller e slug
+Route::get('/progetti/{slug}', [PageController::class, 'projectDetail'])->name('project.detail');
+
+// Pagina contatti
 Route::get('/contattami', function () {
     return view('contact');
-});
+})->name('contact');
 
+// Pagina servizi
 Route::get('/servizi', function () {
     $services = ['marketing', 'comunicazione', 'website', 'consulenza'];
     return view('services', ['services' => $services]);
-});
+})->name('services');
 
+// Singolo servizio tramite slug
 Route::get('/servizi/{service}', function ($service) {
     return view('service', ['service' => $service]);
-});
+})->name('service.detail');
 
-Route::get('/progetti/{project}', function ($project) {
-    return view('welcome', ['project' => $project]);
-});
+// Pagina tutti i progetti
+Route::get('/progetti', [PageController::class, 'allProjects'])->name('project.all');

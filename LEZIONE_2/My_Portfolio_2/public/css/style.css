@@ -1,11 +1,49 @@
+.bg-contrast-dark {
+    background-color: #121a2a;
+    /* blu notte molto scuro */
+    /* oppure un grigio antracite */
+    /* background-color: #1e1e1e; */
+    color: white;
+    /* per far risaltare il testo chiaro */
+}
+
 .hero-overlay {
     background-color: rgba(0, 0, 0, 0.65);
     /* sfondo nero con opacità */
     z-index: 2;
+    padding: 0 15px;
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .hero-content {
-    max-width: 800px;
+    max-width: 900px;
+    padding: 2rem 0;
+    margin: 0 auto;
+    color: white;
+    text-align: center;
+    z-index: 3;
+
+    /* Animazione fade-in */
+    animation: fadeInUp 1s ease forwards;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin: 0;
+}
+
+.hero-content p {
+    font-size: 1.25rem;
+    margin: 1rem 0 2rem 0;
 }
 
 .carousel-indicators {
@@ -23,37 +61,52 @@
     padding: 0;
     overflow: hidden;
     background: none;
+    width: 100vw;
+    height: 100vh;
 }
 
-.carousel-img {
+.carousel-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+
+    /* Animazione lenta di dissolvenza */
+    animation: slowFade 6s ease-in-out infinite alternate;
 }
 
-.hero-overlay {
-    background-color: rgba(0, 0, 0, 0.6);
-    z-index: 2;
-    padding: 0 15px;
-    box-sizing: border-box;
+.card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
 }
 
-.hero-content {
-    max-width: 900px;
-    padding: 2rem 0;
-    margin: 0 auto;
-    color: white;
-    text-align: center;
+.card:hover {
+    transform: translateY(-5px);
 }
 
-.hero-content h1 {
-    font-size: 3rem;
-    margin: 0;
+.card-body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
 }
 
-.hero-content p {
-    font-size: 1.25rem;
-    margin: 1rem 0 2rem 0;
+.card img {
+    transition: transform 0.4s ease;
+}
+
+.card:hover img {
+    transform: scale(1.05);
+}
+
+.card .btn {
+    margin-top: auto;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.card .btn:hover {
+    background-color: #0056b3;
+    color: #fff;
 }
 
 /* --- Stili base validi per tutti i dispositivi --- */
@@ -64,28 +117,25 @@
     width: 100vw;
 }
 
-.carousel-item img {
-    object-fit: cover;
-}
-
 .hero-overlay {
     background: rgba(0, 0, 0, 0.5);
-    /* o linear-gradient se vuoi più finezza */
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 2;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 2rem;
 }
 
-.hero-content {
-    z-index: 3;
-    color: white;
-    max-width: 800px;
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slowFade {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.85;
+    }
 }
 
 /* --- Responsive per dispositivi piccoli (fino a 767.98px) --- */
@@ -110,23 +160,231 @@
     }
 }
 
-.card {
+.btn-gradient-animated-green {
+    background: linear-gradient(270deg, #78ffd6, #a8ff78, #78ffd6, #a8ff78);
+    background-size: 800% 800%;
+    animation: gradientMoveGreen 15s ease infinite;
+    color: #1a1a1a;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease, color 0.3s ease;
+    padding: 0.5rem 1.25rem;
+    font-weight: 600;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+}
+
+.btn-gradient-animated-green:hover {
+    box-shadow: 0 0 10px #78ffd6, 0 0 20px #a8ff78;
+    color: #000;
+}
+
+@keyframes gradientMoveGreen {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+body {
+    background-color: #0a0f0d;
+}
+
+/* Background scuro per tutta la sezione servizi */
+#service {
+    background-color: #0a0f0d;
+    /* blu notte molto scuro */
+    padding: 4rem 0;
+    color: #eee;
+}
+
+/* Container con max width */
+#service .container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Titolo sezione */
+#service h1 {
+    color: #78ffd6;
+    /* verde chiaro */
+    margin-bottom: 3rem;
+    font-weight: 700;
+    text-align: center;
+    font-size: 2.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Grid cards */
+#service .row {
+    gap: 2rem;
+}
+
+/* Card styling */
+.card-led-clean {
+    position: relative;
+    background-color: #1e263b;
+    /* carta scura ma non nera */
+    border-radius: 16px;
+    padding: 2rem 1.5rem 2.5rem 1.5rem;
     height: 100%;
+    box-shadow: 0 4px 20px rgb(0 255 150 / 0.15);
     display: flex;
     flex-direction: column;
-}
-
-.card-body {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-.card .btn {
-    margin-top: auto;
-}
-
-.card:hover {
-    transform: translateY(-5px);
+    align-items: center;
+    color: #cde8d8;
+    text-align: center;
     transition: transform 0.3s ease;
+    overflow: visible;
+    cursor: default;
+}
+
+/* Icone SVG sopra il titolo */
+.card-led-clean svg {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 1rem;
+    fill: #78ffd6;
+    transition: transform 0.3s ease;
+}
+
+/* Titolo card */
+.card-led-clean h5 {
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: #b5ffcb;
+    text-transform: uppercase;
+}
+
+/* Descrizione card */
+.card-led-clean p {
+    flex-grow: 1;
+    font-size: 1rem;
+    line-height: 1.4;
+    color: #a0c4b5;
+    margin-bottom: 0;
+}
+
+/* BORDO LED ANIMATO solo bordo esterno */
+.card-led-clean::before {
+    content: "";
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    border-radius: 20px;
+    padding: 3px;
+    background: linear-gradient(270deg, #32ff7e, #2ecc71, #00a8ff, #a8ff78);
+    background-size: 600% 600%;
+    animation: ledFlow 8s linear infinite;
+    filter: blur(1.8px);
+    transition: filter 0.3s ease, opacity 0.3s ease;
+    opacity: 0.6;
+    z-index: -1;
+}
+
+/* Hover bordi più luminosi e animazione accelerata */
+.card-led-clean:hover::before {
+    animation-duration: 2.5s;
+    opacity: 1;
+    filter: blur(3px);
+}
+
+/* Hover icona leggermente ingrandita */
+.card-led-clean:hover svg {
+    transform: scale(1.2);
+}
+
+/* Hover leggera scala card */
+.card-led-clean:hover {
+    transform: translateY(-8px);
+}
+
+/* Animazione ledFlow */
+@keyframes ledFlow {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Pulsante verde moderno */
+.btn-gradient-animated-green {
+    background: linear-gradient(270deg, #78ffd6, #a8ff78, #78ffd6, #a8ff78);
+    background-size: 600% 600%;
+    text-decoration: black;
+    animation: gradientMoveGreen 15s ease infinite;
+    color: #000000;
+    border: none;
+    border-radius: 6px;
+    padding: 0.6rem 1.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease, color 0.3s ease;
+    display: inline-block;
+    margin-top: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-gradient-animated-green:hover {
+    box-shadow: 0 0 12px #78ffd6, 0 0 25px #a8ff78;
+    color: #000;
+}
+
+@keyframes gradientMoveGreen {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Responsive */
+
+@media (max-width: 992px) {
+    #service .row {
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    #service h1 {
+        font-size: 2.2rem;
+    }
+
+    .card-led-clean {
+        padding: 1.5rem 1rem 2rem 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #service h1 {
+        font-size: 1.8rem;
+    }
 }

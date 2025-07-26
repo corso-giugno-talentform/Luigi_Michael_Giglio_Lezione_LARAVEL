@@ -4,15 +4,15 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Il Mio Portfolio</title>
+    <title>{{ $titolopagina ?? 'Titolo non trovato' }}</title>
+    <link class="icon-website" rel="website icon" type="png" href="images/logo-transparent.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
-    <link rel="stylesheet" href="../resources/css/style.css">
-    <link rel="stylesheet" href="../public/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
-    <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg bg-light shadow-sm sticky-top">
         <div class="container">
             <a class="navbar-brand fw-bold" href="/">Portfolio</a>
@@ -21,33 +21,19 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <div class="navbar-nav ms-auto">
-                    <a class="nav-link active" href="/">Home</a>
-                    <a class="nav-link" href="/chisono">Chi Sono</a>
-                    <a class="nav-link" href="#progetti">Progetti</a>
-                    <a class="nav-link" href="#contattami">Contatti</a>
-                    <a class="nav-link" href="#servizi">Servizi</a>
+                    <a class="nav-link {{ request()->routeIs('homepage') ? 'active' : '' }}"
+                        href="{{ route('homepage') }}#home">Home</a>
+                    <a class="nav-link" href="{{ route('homepage') }}#about">Chi Sono</a>
+                    <a class="nav-link" href="{{ route('homepage') }}#service">Servizi</a>
+                    <a class="nav-link" href="{{ route('homepage') }}#projects">Progetti</a>
+                    <a class="nav-link" href="{{ route('homepage') }}#contact">Contatti</a>
                 </div>
+
             </div>
         </div>
     </nav>
-    <div class="px-4 py-5 my-5 text-center">
-        <h1 class="display-5 fw-bold text-body-emphasis">Il Mio Servizio</h1>
-        <div class="row row-cols-1 row-cols-md-3 g-4">
 
-            <div class="col">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $project }}</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in
-                            to
-                            additional content. This content is a little bit longer.</p>
-                    </div>
-                </div>
-            </div>
-
-
-        </div>
-    </div>
+    {{ $slot }}
 
     <!-- FOOTER -->
     <footer class="text-center py-4 bg-dark text-white">
@@ -58,6 +44,13 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000, // durata animazioni in ms
+            once: true // anima solo la prima volta che si scrolla
+        });
     </script>
 </body>
 

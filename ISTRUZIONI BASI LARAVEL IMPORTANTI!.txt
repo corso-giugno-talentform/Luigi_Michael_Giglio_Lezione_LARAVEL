@@ -1,0 +1,15 @@
+Per creare un progetto -> apri git bash come amministratore -> laravel new -> none -> 0 -> MySQL lite ecc.
+
+Bisogna creare sulla cartella "app" -> PageController.php (tramite terminale col comando -> 
+Bisogna creare sulla cartella "public" -> css -> style.css
+Bisogna creare sulla cartella "public" -> images -> (le varie immagini)
+
+<x-main> -> prende il contenuto da "main.blade.php" che SI DEVE TROVARE OBBLIGATORIAMENTE DENTRO LA CARTELLA "COMPONENTS" dentro "RESOURCE";
+serve per avere, come nel nostro caso, la navbar, il footer SEMPRE UGUALI IN TUTTE LE PAGINE! 
+
+Per inserire tutto ciò che c'è per esempio nell'homepage, bisogna andare su "main.blade.php" e tra la navbar e il footer gli inserisci: {{ slot }}
+
+
+Volendo uno dentro la cartella "components" si può creare più pagine. Per poterle richiamare (facciamo un esempio della navbar), dentro la cartella components ti ritrovi -> 
+main.blade.php e navbar.blade.php 
+Per poter richiamare il file "navbar.blade.php" basta che vai sul file "main.blade.php" e gli inserisci <x-navbar> </x-navbar> nella posizione in cui vuoi che la navbar sia!
